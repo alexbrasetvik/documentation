@@ -1,10 +1,8 @@
 # SSL Add-on
 
-**TL;DR:**
-
- * This Add-on provides SSL support for custom domains.
- * You need to have an RSA Private Key, an SSL Certificate and a Certificate Chain.
- * Add the Add-on to your deployment via our CLI with the [addon.add command](#adding-the-ssl-add-on).
+[This Add-on provides SSL support for custom domains.](#custom-domain-certificates)    
+[You need to have an RSA Private Key, an SSL Certificate and a Certificate Chain.](#acquiring-an-ssl-certificate)    
+[Add the Add-on to your deployment via our CLI with the addon.add command.](#adding-the-ssl-add-on)   
 
 Secure Socket Layer (SSL) encryption is available for improved security when
 transmitting passwords and other sensitive data.
@@ -162,6 +160,16 @@ certificate authority using the respective parameters of the addon.add command.
  ~~~
  $ cctrlapp APP_NAME/DEP_NAME addon.add ssl.host --cert path/to/CERT_FILE --key path/to/KEY_FILE --chain path/to/CHAIN_FILE
  ~~~
+
+The key file should be the one [without passphrase](#removing-the-passphrase). When you are not sure, just open the file in a text editor. The encrypted key start like this:
+ ~~~
+ -----BEGIN RSA PRIVATE KEY-----
+ Proc-Type: 4,ENCRYPTED
+ DEK-Info: DES-EDE3-CBC,35563E25D33DA690
+ ...
+ -----END RSA PRIVATE KEY-----
+ ~~~
+
 
 In order to check the status of the Add-on, you can do the following.
  ~~~
